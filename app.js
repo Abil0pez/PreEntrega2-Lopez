@@ -1,47 +1,59 @@
-alert("Hola bienvenido!")
-alert("¿Desea llevar algun producto? de lo contrario, ingrese 5 al continuar.")
-let seleccionproductos = NaN;
-let seleccioncantidad;
-let totalPrecio = 0;
-let totalProductos = 0;
+class Producto {
+    nombre;
+    precio;
 
-function validarProducto(numero){
-    while (numero < 0 || numero.length == 0 || isNaN(numero)){
-        numero = parseInt(prompt("Ingrese una cantidad correcta: "))
-    }
-    return numero
-}
-
-while (seleccionproductos != 5) {
-    seleccionproductos = parseInt(prompt("1-Alaska: $5999 \n2-Bilbao: $3999 \n3-Black: $9999 \n4-Tokyo: $2999\n5-Salir: "))
-    switch (seleccionproductos) {
-        case 1:
-            seleccioncantidad = validarProducto(parseInt(prompt("El producto seleccionado es Alaska, indique la cantidad: ")))
-            totalPrecio += seleccioncantidad * 5999
-            totalProductos += seleccioncantidad
-            break;
-        case 2:
-            seleccioncantidad = validarProducto(parseInt(prompt("El producto seleccionado es Bilbao, indique la cantidad: ")))
-            totalPrecio += seleccioncantidad * 3999 
-            totalProductos += seleccioncantidad
-            break;
-        case 3:
-            seleccioncantidad = validarProducto(parseInt(prompt("El producto seleccionado es Black, indique la cantidad: ")))            
-            totalPrecio += seleccioncantidad * 9999 
-            totalProductos += seleccioncantidad
-            break;
-        case 4:
-            seleccioncantidad = validarProducto(parseInt(prompt("El producto seleccionado es Tokyo, indique la cantidad: ")))            
-            totalPrecio += seleccioncantidad * 2999 
-            totalProductos += seleccioncantidad
-            break;
-        case 5:
-            alert("Adios vuelva pronto :)")
-            break;
-        default:
-            alert("Ingrese una opcion valida :)")
-            break;
+    constructor(nombre, precio) {
+        this.nombre = nombre;
+        this.precio = precio;
     }
 }
-alert("El total de productos es de: " + totalProductos)
-alert("El total de la compra es de: " + totalPrecio + "$")
+
+function main() {
+    const producto1 = new Producto("Alaska", 5999);
+    const producto2 = new Producto("Bilbao", 3999);
+    const producto3 = new Producto("Black", 9999);
+    const producto4 = new Producto("Tokyo", 2999);
+
+    const catalogo = [producto1, producto2, producto3, producto4];
+
+
+
+
+    let seleccion = prompt("Hola desea comprar algun producto si o no");
+
+    while (seleccion != "si" && seleccion != no) {
+        alert("Porfavor ingresa si o no")
+        seleccion = prompt("Hola desea comprar algo si o no")
+    }
+
+    if (seleccion == "si") {
+        alert("A continuacion nuestra lista de productos")
+        alert("Alaska - 5999 - ID: 1\nBilbao - 3999 - ID: 2\n Black - 9999 - ID: 3\nTokyo - 2999 - ID: 4")
+    } else if (seleccion == "no") {
+        alert("Gracias por visitar la pagina, hasta pronto!")
+    }
+
+    while (seleccion != "no") {
+        let eleccion = parseInt(prompt("Agrega un producto a tu carrito! Ponga su ID"))
+        console.log(eleccion)
+        let id = eleccion - 1
+        if (eleccion = !0) {
+
+            console.log(id)
+            let unidades = parseInt(prompt("Cuantas unidades quiere llevar"))
+
+            let precioFinal = catalogo[id].precio * unidades
+            console.log(precioFinal)
+            alert("El costo es de " + precioFinal)
+        } else {
+            alert("No tenemos ese producto")
+        }
+
+        seleccion = prompt("Desea seguir comprando?")
+
+        if (seleccion === "no")
+            alert("Gracias por su compra! hasta pronto")
+    }
+}
+
+main()
